@@ -23,12 +23,12 @@ module "routes" {
 }
 
 
-module "master_setup_route53" {
-   source = "./route53"
-   master = var.masterMain
-   my_vpc_id = module.vpc.my_vpc.id
+# module "master_setup_route53" {
+#    source = "./route53"
+#    master = var.masterMain
+#    my_vpc_id = module.vpc.my_vpc.id
    
-}
+# }
 
 module "subnet" {
     source = "./subnet"
@@ -44,13 +44,13 @@ module "prefix_list" {
    }
 
 
-module "load_balancers" {
-    source = "./load_balancer"
-    master=var.masterMain
-    infa = var.infaMain
-    my_vpc_id = module.vpc.my_vpc.id
-    my_subnets_app = module.subnet.my_subnets_app
-   }
+# module "load_balancers" {
+#     source = "./load_balancer"
+#     master=var.masterMain
+#     infa = var.infaMain
+#     my_vpc_id = module.vpc.my_vpc.id
+#     my_subnets_app = module.subnet.my_subnets_app
+#    }
 
 # module "lambda" {
 #     source = "./lambda"
@@ -59,14 +59,14 @@ module "load_balancers" {
 #    }
 
 
-module "vpc_peering" {
-    count = var.infaMain.lane == var.masterMain.adminlane ? 0 : 1
-    depends_on = [module.vpc]
-    source = "./peering/"
-    master=var.masterMain
-    infa = var.infaMain
-    my_vpc_id = module.vpc.my_vpc.id
-}
+# module "vpc_peering" {
+#     count = var.infaMain.lane == var.masterMain.adminlane ? 0 : 1
+#     depends_on = [module.vpc]
+#     source = "./peering/"
+#     master=var.masterMain
+#     infa = var.infaMain
+#     my_vpc_id = module.vpc.my_vpc.id
+# }
 
 #output "my_vpcid" {
 #  value       = module.route53.my_vpcid

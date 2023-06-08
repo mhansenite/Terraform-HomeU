@@ -20,11 +20,11 @@ output "my_subnets_db" {
   value = module.subnet.my_subnets_db
 }
 
-output "my_public_listener" {
-  value = module.load_balancers.my_public_listener
-}
+# output "my_public_listener" {
+#   value = module.load_balancers.my_public_listener
+# }
 
-output "my_private_listener" {
-  value = module.load_balancers.my_public_listener
-}
+# output "my_private_listener" {
+#   value = module.load_balancers.my_public_listener
+# }
 
